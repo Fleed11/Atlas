@@ -13,16 +13,25 @@
 - Explainable matching service added
 - Search normalization/filter foundation added
 - Central i18n service added
+- Player Core domain services added
+- Atlas Score calculation added
+- Application workflow/state machine added
+- Club & Academy recruitment core added
+- Security model added
+
+## In progress
+- Scout Core
+- Advanced Atlas Search
 
 ## Next implementation layer
-1. Replace demo dashboard state with Base44 data adapters.
-2. Add authenticated session + role guards.
-3. Build Player CRUD/profile/media/objectives/reports.
-4. Build organization and recruitment-needs CRUD.
-5. Build opportunities, applications and trial workflows.
-6. Wire Atlas Search to persisted entities and permissions.
-7. Wire Atlas Match to recruitment needs and candidate pools.
-8. Add parent consent and minor-data controls.
-9. Build Scout, Club, Academy and Atlas Staff workspaces.
-10. Add notifications, messaging and audit events.
-11. Add automated tests and production deployment configuration.
+1. Authenticated session + role guards wired to Base44.
+2. Player CRUD/profile/media/objectives/reports persisted.
+3. Organization and recruitment-needs CRUD persisted.
+4. Opportunities, applications and trial workflows persisted.
+5. Atlas Search connected to persisted entities and permissions.
+6. Atlas Match connected to recruitment needs and candidate pools.
+7. Parent consent and minor-data controls.
+8. Scout, Club, Academy and Atlas Staff workspaces.
+9. Notifications, messaging and calendar.
+10. CRM + audit events.
+11. Automated tests and production deployment configuration.
