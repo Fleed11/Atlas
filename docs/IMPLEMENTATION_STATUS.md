@@ -30,6 +30,8 @@
 - Provider-neutral API/data contracts added
 - Generic persistence repositories added
 - Domain services exposed through persistence adapter
+- Role-specific workspace configuration added
+- Functional alpha readiness gate documented
 
 ## Current implementation layer
 - Base44 entity mapping and backend action implementation
