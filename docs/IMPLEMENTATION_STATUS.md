@@ -28,18 +28,21 @@
 - Atlas Staff/Admin verification core added
 - Persistent Data Layer / Base44 adapter contract added
 - Provider-neutral API/data contracts added
+- Generic persistence repositories added
+- Domain services exposed through persistence adapter
 
 ## Current implementation layer
-- Base44 persistence mapping and backend action implementation
+- Base44 entity mapping and backend action implementation
 - Auth/session wiring
 - Permission enforcement in server actions
+- Production UI wiring
 
 ## Next implementation layer
 1. Implement Base44 entities and seed/reference data.
-2. Implement authenticated session and role guards.
-3. Wire Player/Organization/Scout CRUD to persistence.
-4. Wire Search and Match to persisted data.
-5. Wire Applications/Trials/CRM/Notifications.
+2. Connect authenticated session and role guards to Base44 identity.
+3. Connect Player/Organization/Scout CRUD screens to repositories.
+4. Connect Search and Match to persisted entities and permissions.
+5. Connect Applications/Trials/CRM/Notifications workflows.
 6. Add Calendar provider adapters.
-7. Add complete UI workspaces for each role.
-8. Add automated tests and production deployment configuration.
+7. Complete role-specific UI workspaces.
+8. Add automated tests, CI and production deployment configuration.
