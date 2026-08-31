@@ -1,0 +1,7 @@
+export type CandidateStage='discovered'|'shortlisted'|'contacted'|'interview'|'trial'|'offer'|'signed'|'rejected';
+export interface CandidateRecord { id:string; playerId:string; organizationId:string; opportunityId?:string; stage:CandidateStage; matchScore:number; confidence:number; ownerId?:string; notes:string[]; nextAction?:string; nextActionAt?:string; createdAt:string; updatedAt:string; }
+const allowed:Record<CandidateStage,CandidateStage[]>={discovered:['shortlisted','rejected'],shortlisted:['contacted','rejected'],contacted:['interview','trial','rejected'],interview:['trial','offer','rejected'],trial:['offer','rejected'],offer:['signed','rejected'],signed:[],rejected:['discovered']};
+export function canMoveCandidate(from:CandidateStage,to:CandidateStage){return allowed[from].includes(to)}
+export function moveCandidate(record:CandidateRecord,to:CandidateStage):CandidateRecord{if(!canMoveCandidate(record.stage,to))throw new Error(`Invalid candidate transition: ${record.stage} -> ${to}`);return {...record,stage:to,updatedAt:new Date().toISOString()}}
+export function pipelineCounts(records:CandidateRecord[]):Record<CandidateStage,number>{const r:Record<CandidateStage,number>={discovered:0,shortlisted:0,contacted:0,interview:0,trial:0,offer:0,signed:0,rejected:0};records.forEach(x=>r[x.stage]++);return r}
+export function rankCandidates(records:CandidateRecord[]){return [...records].sort((a,b)=>(b.matchScore*.7+b.confidence*.3)-(a.matchScore*.7+a.confidence*.3))}
