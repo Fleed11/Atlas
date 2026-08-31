@@ -18,20 +18,28 @@
 - Application workflow/state machine added
 - Club & Academy recruitment core added
 - Security model added
+- Scout Core added
+- Atlas global search service added
+- Recruitment candidate pipeline engine added
+- CRM core added
+- Communications/notifications core added
+- Trials and Calendar domain added
+- Family relationships and granular consent added
+- Atlas Staff/Admin verification core added
+- Persistent Data Layer / Base44 adapter contract added
+- Provider-neutral API/data contracts added
 
-## In progress
-- Scout Core
-- Advanced Atlas Search
+## Current implementation layer
+- Base44 persistence mapping and backend action implementation
+- Auth/session wiring
+- Permission enforcement in server actions
 
 ## Next implementation layer
-1. Authenticated session + role guards wired to Base44.
-2. Player CRUD/profile/media/objectives/reports persisted.
-3. Organization and recruitment-needs CRUD persisted.
-4. Opportunities, applications and trial workflows persisted.
-5. Atlas Search connected to persisted entities and permissions.
-6. Atlas Match connected to recruitment needs and candidate pools.
-7. Parent consent and minor-data controls.
-8. Scout, Club, Academy and Atlas Staff workspaces.
-9. Notifications, messaging and calendar.
-10. CRM + audit events.
-11. Automated tests and production deployment configuration.
+1. Implement Base44 entities and seed/reference data.
+2. Implement authenticated session and role guards.
+3. Wire Player/Organization/Scout CRUD to persistence.
+4. Wire Search and Match to persisted data.
+5. Wire Applications/Trials/CRM/Notifications.
+6. Add Calendar provider adapters.
+7. Add complete UI workspaces for each role.
+8. Add automated tests and production deployment configuration.
