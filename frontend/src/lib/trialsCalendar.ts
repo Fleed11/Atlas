@@ -1,0 +1,7 @@
+export type TrialStatus='scheduled'|'confirmed'|'completed'|'cancelled'|'no_show';
+export type EventType='trial'|'match'|'training'|'camp'|'meeting'|'scouting';
+export interface AtlasEvent {id:string; type:EventType; title:string; startAt:string; endAt:string; timezone:string; location?:string; organizationId?:string; playerId?:string; scoutId?:string; status:'scheduled'|'confirmed'|'completed'|'cancelled'; notes?:string;}
+export interface Trial {id:string; playerId:string; organizationId:string; opportunityId?:string; startAt:string; endAt:string; timezone:string; location:string; status:TrialStatus; instructions?:string; outcome?:'pending'|'positive'|'negative'|'follow_up';}
+export function trialToEvent(trial:Trial):AtlasEvent{return {id:`trial-event-${trial.id}`,type:'trial',title:'Football Trial',startAt:trial.startAt,endAt:trial.endAt,timezone:trial.timezone,location:trial.location,organizationId:trial.organizationId,playerId:trial.playerId,status:trial.status==='confirmed'?'confirmed':trial.status==='completed'?'completed':trial.status==='cancelled'?'cancelled':'scheduled'};}
+export function canUpdateTrialStatus(from:TrialStatus,to:TrialStatus){const transitions:Record<TrialStatus,TrialStatus[]>={scheduled:['confirmed','cancelled'],confirmed:['completed','cancelled','no_show'],completed:[],cancelled:[],no_show:[]};return transitions[from].includes(to)}
+export function sortEvents(events:AtlasEvent[]){return [...events].sort((a,b)=>new Date(a.startAt).getTime()-new Date(b.startAt).getTime())}
